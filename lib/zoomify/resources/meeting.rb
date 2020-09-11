@@ -7,7 +7,7 @@ module Zoomify
           self.class.send("fire_#{meeting_method_with_user_id_options[method.to_sym]}", "/users/#{Request.extract_id_from_params(params)}/meetings", params)
         end
       end
-      %w(meeting meeting_update meeting_delete meeting_update_status meeting_registrants meeting_registrants_create meeting_registrants_update_status).each do |method|
+      %w(meeting meeting_update meeting_delete meeting_update_status meeting_registrants meeting_registrants_create meeting_registrants_update_status meeting_livestream).each do |method|
         define_method method do |*args|
           params = Request.extract_params_and_manage_id_error *args
           method_option = meeting_method_with_meeting_id_options(params)[method.to_sym]
@@ -54,6 +54,10 @@ module Zoomify
               meeting_registrants_update_status: {
                   request: 'put',
                   url: "/meetings/#{params[:id]}/registrants/status"
+              },
+              meeting_livestream: {
+                request: 'patch',
+                url: "/meetings/#{params[:id]}/livestream"
               }
           }
         end
