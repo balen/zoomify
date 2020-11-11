@@ -78,33 +78,32 @@ module Zoomify
               },
               user_settings: {
                   request: 'get',
-                  url: "/users/#{user_id}/settings"
+                  url: "/users/#{Request.extract_id_from_params(params)}/settings"
               },
-              user_settings_update: {
-                  request: 'patch',
-                  url: "/users/#{user_id}/settings"
-              },
-              user_status_update: {
-                  request: 'put',
-                  url: "/users/#{user_id}/status",
-              },
-              user_password_update: {
-                  request: 'put',
-                  url: "/users/#{user_id}/password"
-              },
-              user_permissions: {
-                  request: 'get',
-                  url: "/users/#{user_id}/permissions"
-              },
-              user_token: {
-                  request: 'get',
-                  url: "/users/#{user_id}/token"
-              },
-              user_token_delete: {
-                  request: 'delete',
-                  url: "/users/#{user_id}/token"
-              }
-
+              # user_settings_update: {
+              #     request: 'patch',
+              #     url: "/users/#{user_id}/settings"
+              # },
+              # user_status_update: {
+              #     request: 'put',
+              #     url: "/users/#{user_id}/status",
+              # },
+              # user_password_update: {
+              #     request: 'put',
+              #     url: "/users/#{user_id}/password"
+              # },
+              # user_permissions: {
+              #     request: 'get',
+              #     url: "/users/#{user_id}/permissions"
+              # },
+              # user_token: {
+              #     request: 'get',
+              #     url: "/users/#{user_id}/token"
+              # },
+              # user_token_delete: {
+              #     request: 'delete',
+              #     url: "/users/#{user_id}/token"
+              # }
           }
         end
         def user_method_with_multiple_id_options params
